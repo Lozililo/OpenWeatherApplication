@@ -1,9 +1,10 @@
 package com.example.dvtweatherapplication.Repository;
 
 
-import com.example.dvtweatherapplication.Model.ThreeHourForecast;
+import com.kwabenaberko.openweathermaplib.model.threehourforecast.ThreeHourForecast;
 
 public interface ThreeHourForecastCallback {
     void onSuccess(ThreeHourForecast threeHourForecast);
     void onFailure(Throwable throwable);
 }
+

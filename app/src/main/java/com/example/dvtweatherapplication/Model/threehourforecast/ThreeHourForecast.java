@@ -1,4 +1,4 @@
-package com.example.dvtweatherapplication.Model;
+package com.example.dvtweatherapplication.Model.threehourforecast;
 
 import com.google.gson.annotations.SerializedName;
 import com.kwabenaberko.openweathermaplib.model.threehourforecast.City;

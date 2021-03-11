@@ -1,8 +1,7 @@
 package com.example.dvtweatherapplication.Services;
 
-import com.example.dvtweatherapplication.Model.Current;
 import com.example.dvtweatherapplication.Model.CurrentWeather;
-import com.example.dvtweatherapplication.Model.ForecastData;
+import com.kwabenaberko.openweathermaplib.model.threehourforecast.ThreeHourForecast;
 
 import java.util.Map;
 
@@ -32,6 +31,6 @@ public interface WeatherServices {
     Call<CurrentWeather> getCurrentWeatherByCityName(@QueryMap Map<String, String> options);
 
     @GET(FORECAST)
-    Call<ForecastData> getWeatherForecastByCityName(@QueryMap Map<String, String> options);
+    Call<ThreeHourForecast> getWeatherForecastByCityName(@QueryMap Map<String, String> options);
 
 }

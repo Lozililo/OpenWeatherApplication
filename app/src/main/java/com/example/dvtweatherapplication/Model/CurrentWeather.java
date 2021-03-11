@@ -2,7 +2,7 @@ package com.example.dvtweatherapplication.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.kwabenaberko.openweathermaplib.model.common.Snow;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -36,8 +36,7 @@ public class CurrentWeather implements Serializable {
     @SerializedName("rain")
     private Rain rain;
 
-    @SerializedName("snow")
-    private Snow snow;
+
 
     @SerializedName("dt")
     private Long dt;
@@ -87,10 +86,6 @@ public class CurrentWeather implements Serializable {
 
     public Rain getRain() {
         return rain;
-    }
-
-    public Snow getSnow() {
-        return snow;
     }
 
     public Long getDt() {

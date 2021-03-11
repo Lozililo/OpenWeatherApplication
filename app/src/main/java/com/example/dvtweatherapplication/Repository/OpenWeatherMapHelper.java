@@ -1,16 +1,12 @@
-package com.example.dvtweatherapplication;
+package com.example.dvtweatherapplication.Repository;
 
 import androidx.annotation.NonNull;
 
 import com.example.dvtweatherapplication.Model.CurrentWeather;
-import com.example.dvtweatherapplication.Model.CurrentWeatherResponse;
-import com.example.dvtweatherapplication.Model.ForecastData;
-import com.example.dvtweatherapplication.Model.ThreeHourForecast;
-import com.example.dvtweatherapplication.Repository.CurrentWeatherCallback;
-import com.example.dvtweatherapplication.Repository.ThreeHourForecastCallback;
 import com.example.dvtweatherapplication.Services.ApiService;
 import com.example.dvtweatherapplication.Services.WeatherServices;
-
+import com.kwabenaberko.openweathermaplib.implementation.callback.ThreeHourForecastCallback;
+import com.kwabenaberko.openweathermaplib.model.threehourforecast.ThreeHourForecast;
 
 
 import org.json.JSONException;
@@ -46,14 +42,6 @@ public class OpenWeatherMapHelper {
         options.put(APPID, apiKey == null ? "" : apiKey);
     }
 
-
-    //SETUP METHODS
-    public void setUnits(String units){
-        options.put(UNITS, units);
-    }
-    public void setLanguage(String lang) {
-        options.put(LANGUAGE, lang);
-    }
 
 
     private Throwable NoAppIdErrMessage() {
@@ -116,23 +104,23 @@ public class OpenWeatherMapHelper {
         }
     }
 
+    //Get Forecast By City name
     public void getThreeHourForecastByCityName(String city, final ThreeHourForecastCallback callback){
         options.put(QUERY, city);
+        weatherServices.getWeatherForecastByCityName(options)
+                .enqueue(new Callback<ThreeHourForecast>() {
+                    @Override
+                    public void onResponse(@NonNull Call<ThreeHourForecast> call, @NonNull Response<ThreeHourForecast> response) {
+                        handleThreeHourForecastResponse(response, callback);
+                    }
 
-       weatherServices.getWeatherForecastByCityName(options).enqueue(new Callback<ForecastData>() {
-           @Override
-           public void onResponse(Call<ForecastData> call, Response<ForecastData> response) {
+                    @Override
+                    public void onFailure(@NonNull Call<ThreeHourForecast> call, @NonNull Throwable throwable) {
+                        callback.onFailure(throwable);
+                    }
+                });
 
-           }
-
-           @Override
-           public void onFailure(Call<ForecastData> call, Throwable t) {
-
-           }
-       });
     }
-
-
 
     private void handleThreeHourForecastResponse(Response<ThreeHourForecast> response, ThreeHourForecastCallback callback){
         if (response.code() == HttpURLConnection.HTTP_OK){
@@ -148,7 +136,7 @@ public class OpenWeatherMapHelper {
                 e.printStackTrace();
             }
         }
+
+
     }
-
-
 }

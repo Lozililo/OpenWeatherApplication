@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/holo_green_light"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/holo_green_light"
-        android:layout_marginTop="25dp">
+        >
 
 
         <TextView
@@ -24,8 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:text="tuesday"
             android:textColor="@android:color/white"
-
-            />
+            android:layout_marginLeft="25dp" />
 
 
         <ImageView
@@ -39,10 +38,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/weekday"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginLeft="100dp" />
 
         <TextView
-            android:id="@+id/current_temperature"
+            android:id="@+id/forecast_temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"

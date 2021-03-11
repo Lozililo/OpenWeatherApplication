@@ -22,7 +22,7 @@
                 android:src="@drawable/forest_sunny"
                 />
             <TextView
-                android:id="@+id/current_temperature"
+                android:id="@+id/current_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -64,6 +64,7 @@
         android:background="@android:color/holo_green_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weatherCard"
         >
 
@@ -161,7 +162,9 @@
         android:id="@+id/forecast_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/display_weather" />
+        android:layout_marginTop="35dp"
+
+        app:layout_constraintTop_toBottomOf="@id/display_weather"
+
+        />
     </androidx.constraintlayout.widget.ConstraintLayout>

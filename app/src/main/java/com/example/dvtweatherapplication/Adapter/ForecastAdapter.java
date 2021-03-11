@@ -8,15 +8,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dvtweatherapplication.Model.ForecastData;
 import com.example.dvtweatherapplication.R;
+import com.kwabenaberko.openweathermaplib.model.threehourforecast.ThreeHourForecastWeather;
 
 import java.util.List;
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder> {
 
-    private List<ForecastData> forecastDataList;
+    private List<ThreeHourForecastWeather> forecastDataList;
 
-    public ForecastAdapter(List<ForecastData> forecastDataList) {
+    public ForecastAdapter(List<ThreeHourForecastWeather> forecastDataList) {
         this.forecastDataList = forecastDataList;
     }
     @NonNull
@@ -29,9 +29,10 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
     @Override
     public void onBindViewHolder(ForecastViewHolder holder, int position) {
-        ForecastData forecastData=forecastDataList.get(position);
-        holder.temperature.setText(forecastData.getTeemperature());
-        holder.weekday.setText(forecastData.getWeekday());
+        ThreeHourForecastWeather forecastData=forecastDataList.get(position);
+        //holder.forecastTemp.setText((int) forecastDataList.get(position).getMain().getTemp());
+        holder.weekday.setText(forecastDataList.get(position).getDtTxt());
+
     }
 
     @Override
@@ -42,11 +43,11 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
     class ForecastViewHolder extends RecyclerView.ViewHolder {
 
-        TextView temperature, weekday;
+        TextView forecastTemp, weekday;
 
         ForecastViewHolder(View view) {
             super(view);
-            temperature = view.findViewById(R.id.current_temperature);
+            forecastTemp = view.findViewById(R.id.forecast_temperature);
             weekday = view.findViewById(R.id.weekday);
 
         }
